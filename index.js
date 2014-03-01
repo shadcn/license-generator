@@ -8,7 +8,7 @@ var version = require('./package.json').version;
 
 // Get available licenses.
 var licenses = [];
-fs.readdirSync('./licenses').map(function(license) {
+fs.readdirSync(__dirname + '/licenses').map(function(license) {
   licenses.push(license.replace(/\.[0-9a-z]+$/i, ''));
 });
 
@@ -30,7 +30,7 @@ program
     var fullname = options.fullname || '';
 
     // Create a LICENSE file.
-    var license_file = './licenses/' + license + '.txt';
+    var license_file = __dirname + '/licenses/' + license + '.txt';
     fs.readFile(license_file, 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
@@ -57,7 +57,7 @@ program
     }
 
     // Get license file.
-    var license_file = './licenses/' + license + '.txt';
+    var license_file = __dirname + '/licenses/' + license + '.txt';
 
     // Show the license file.
     console.log(fs.readFileSync(license_file, 'utf8'));
