@@ -1,7 +1,7 @@
 {
   "name": "license-generator",
   "version": "0.0.1",
-  "description": "Generates a license from choosealicense.com for your open source project.",
+  "description": "Generates a license for your open source project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
