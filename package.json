@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/arshad/license-generator/issues"
   },
-  "homepage": "https://github.com/arshad/license-generator"
+  "homepage": "https://github.com/arshad/license-generator",
+  "dependencies": {
+    "commander": "~2.1.0"
+  }
 }
