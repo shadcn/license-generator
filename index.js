@@ -63,6 +63,13 @@ program
     console.log(fs.readFileSync(license_file, 'utf8'));
   });
 
+// Options.
+program.on('--help', function(){
+  console.log('    -y, --year The year to use. Example 2014.');
+  console.log('    -n, --fullname The fullname to use in the license.');
+  console.log('');
+});
+
 // Available licenses.
 program.on('--help', function(){
   console.log('  Available licenses:');
