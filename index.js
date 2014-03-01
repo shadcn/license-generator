@@ -12,10 +12,14 @@ fs.readdirSync('./licenses').map(function(license) {
   licenses.push(license.replace(/\.[0-9a-z]+$/i, ''));
 });
 
+// program
+//   .version(version)
+//   .option("-y, --year <year>", 'The year to use. Example: 2014.')
+//   .option("-n, --fullname <fullname>", 'Your fullname.')
+
 program
   .command('install [license]')
   .description('Use this command to generate a license file.')
-  .version(version)
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
   .action(function(license, options){
@@ -46,7 +50,6 @@ program
 program
   .command('view [license]')
   .description('Use this command to view the content of a license.')
-  .version(version)
   .action(function(license) {
     if (!license) {
       console.log('Error: license name missing');
@@ -60,15 +63,11 @@ program
     console.log(fs.readFileSync(license_file, 'utf8'));
   });
 
-// program
-//   .option("-y, --year <year>", 'The year to use. Example: 2014.')
-//   .option("-n, --fullname <fullname>", 'Your fullname.');
-
 // Examples.
 program.on('--help', function(){
   console.log('  Available Licenses:');
   console.log('');
-  console.log('    ' + licenses.join(", \n    "));
+  console.log('    ' + licenses.join("\n    "));
   console.log('');
 });
 
