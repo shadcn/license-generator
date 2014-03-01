@@ -77,6 +77,7 @@ program.on('--help', function(){
   console.log('  Examples:');
   console.log('');
   console.log('    $ license-generator install bsd -y 2014 -n "John Doe"');
+  console.log('    $ license-generator view bsd');
   console.log('');
 });
 
