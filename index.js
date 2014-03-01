@@ -13,10 +13,6 @@ fs.readdirSync('./licenses').map(function(license) {
 });
 
 program
-  .option("-y, --year <year>", 'The year to use. Example: 2014.')
-  .option("-n, --fullname <fullname>", 'Your fullname.')
-
-program
   .command('install [license]')
   .description('Use this command to generate a license file.')
   .version(version)
@@ -64,11 +60,15 @@ program
     console.log(fs.readFileSync(license_file, 'utf8'));
   });
 
+// program
+//   .option("-y, --year <year>", 'The year to use. Example: 2014.')
+//   .option("-n, --fullname <fullname>", 'Your fullname.');
+
 // Examples.
 program.on('--help', function(){
   console.log('  Available Licenses:');
   console.log('');
-  console.log('    ' + licenses.join(", "));
+  console.log('    ' + licenses.join(", \n    "));
   console.log('');
 });
 
