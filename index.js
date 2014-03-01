@@ -3,6 +3,7 @@
 var program = require('commander');
 var fs = require('fs');
 
+// Get version from package.json.
 var version = require('./package.json').version;
 
 // Get available licenses.
