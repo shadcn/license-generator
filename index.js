@@ -63,9 +63,9 @@ program
     console.log(fs.readFileSync(license_file, 'utf8'));
   });
 
-// Examples.
+// Available licenses.
 program.on('--help', function(){
-  console.log('  Available Licenses:');
+  console.log('  Available licenses:');
   console.log('');
   console.log('    ' + licenses.join("\n    "));
   console.log('');
