@@ -1,7 +1,6 @@
 #!/usr/local/bin/node
 
 var program = require('commander');
-var http = require('http');
 var fs = require('fs');
 
 var version = require('./package.json').version;
