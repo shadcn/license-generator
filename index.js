@@ -16,11 +16,25 @@ program
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
 
-    // Create a LICENSE file.
-    var file = fs.createWriteStream('LICENSE');
+    // Use provided name or default to blank.
+    var fullname = options.fullname || '';
 
-    // Copy appropriate license.
-    fs.createReadStream('./licenses/' + license + '.txt').pipe(file);
+    // Create a LICENSE file.
+    var license_file = './licenses/' + license + '.txt';
+    fs.readFile(license_file, 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+
+      // Make replacements for year and fullname.
+      var result = data
+                    .replace(/\[year\]/g, year)
+                    .replace(/\[fullname\]/g, fullname);
+
+      fs.writeFile('./LICENSE', result, 'utf8', function (err) {
+         if (err) return console.log(err);
+      });
+    });
   });
 
 program.parse(process.argv);
