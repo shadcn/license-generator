@@ -7,6 +7,10 @@ var fs = require('fs');
 var version = require('./package.json').version;
 
 program
+  .option("-y, --year <year>", 'The year to use. Example: 2014.')
+  .option("-n, --fullname <fullname>", 'Your fullname.')
+
+program
   .command('install [license]')
   .description('Installs a license')
   .version(version)
@@ -38,3 +42,5 @@ program
   });
 
 program.parse(process.argv);
+
+if (!program.args.length) program.help();
