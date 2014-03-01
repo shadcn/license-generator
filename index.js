@@ -18,7 +18,7 @@ program
 
 program
   .command('install [license]')
-  .description('Installs a license')
+  .description('Use this command to generate a license file.')
   .version(version)
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
@@ -45,6 +45,23 @@ program
          if (err) return console.log(err);
       });
     });
+  });
+
+program
+  .command('view [license]')
+  .description('Use this command to view the content of a license.')
+  .version(version)
+  .action(function(license) {
+    if (!license) {
+      console.log('Error: license name missing');
+      program.help();
+    }
+
+    // Get license file.
+    var license_file = './licenses/' + license + '.txt';
+
+    // Show the license file.
+    console.log(fs.readFileSync(license_file, 'utf8'));
   });
 
 // Examples.
