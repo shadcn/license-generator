@@ -5,6 +5,12 @@ var fs = require('fs');
 
 var version = require('./package.json').version;
 
+// Get available licenses.
+var licenses = [];
+fs.readdirSync('./licenses').map(function(license) {
+  licenses.push(license.replace(/\.[0-9a-z]+$/i, ''));
+});
+
 program
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
@@ -39,6 +45,14 @@ program
       });
     });
   });
+
+// Examples.
+program.on('--help', function(){
+  console.log('  Available Licenses:');
+  console.log('');
+  console.log('    ' + licenses.join(", "));
+  console.log('');
+});
 
 // Examples.
 program.on('--help', function(){
