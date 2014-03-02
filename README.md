@@ -49,6 +49,7 @@ Available licenses
     mozilla
     no-license
     unlicense
+    wtfpl
     
 License
 --------------
