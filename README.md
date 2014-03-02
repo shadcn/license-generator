@@ -13,7 +13,7 @@ Usage
 
 Generate a license
 
-    $ license-generator install LICENSE -y YEAR -n FULLNAME
+    $ license-generator install LICENSE -y YEAR -n FULLNAME -e EXTENSION
 
 View a license
 
@@ -24,11 +24,12 @@ Options
 
     -y, --year The year to use. Example 2014.
     -n, --fullname The fullname to use in the license.
+    -e, --extension The file extension for the license. Example: txt. Defaults to no extension.
 
 Examples
 --------------
 
-    $ license-generator install mit -y 2014 -n "John Doe"
+    $ license-generator install mit -y 2014 -n "John Doe" -e txt
     $ license-generator view mit
 
 Available licenses
