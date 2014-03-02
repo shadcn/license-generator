@@ -43,6 +43,9 @@ program
 
       fs.writeFile('./LICENSE', result, 'utf8', function (err) {
          if (err) return console.log(err);
+
+         // Show a success message.
+         console.log('Successfully added ' + license + ' licence to LICENSE file.');
       });
     });
   });
