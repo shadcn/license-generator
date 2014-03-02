@@ -1,7 +1,7 @@
 license-generator
 =================
 
-Generates a license for your open source project.
+Generates a license for your open source project. See [choosealicense.com](http://choosealicense.com).
 
 Installation
 --------------
