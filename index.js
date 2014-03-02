@@ -22,12 +22,16 @@ program
   .description('Use this command to generate a license file.')
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
+  .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
   .action(function(license, options){
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
 
     // Use provided name or default to blank.
     var fullname = options.fullname || '';
+
+    // Get file extension.
+    var extension = options.extension || '';
 
     // Create a LICENSE file.
     var license_file = __dirname + '/licenses/' + license + '.txt';
@@ -41,11 +45,12 @@ program
                     .replace(/\[year\]/g, year)
                     .replace(/\[fullname\]/g, fullname);
 
-      fs.writeFile('./LICENSE', result, 'utf8', function (err) {
+      var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
+      fs.writeFile(generated_license, result, 'utf8', function (err) {
          if (err) return console.log(err);
 
          // Show a success message.
-         console.log('Successfully added ' + license + ' licence to LICENSE file.');
+         console.log('Successfully added ' + license + ' licence to ' + generated_license + ' file.');
       });
     });
   });
@@ -70,6 +75,7 @@ program
 program.on('--help', function(){
   console.log('    -y, --year The year to use. Example 2014.');
   console.log('    -n, --fullname The fullname to use in the license.');
+  console.log('    -e, --extension The file extension for the license. Example: txt. Defaults to no extension.');
   console.log('');
 });
 
@@ -85,7 +91,7 @@ program.on('--help', function(){
 program.on('--help', function(){
   console.log('  Examples:');
   console.log('');
-  console.log('    $ license-generator install bsd -y 2014 -n "John Doe"');
+  console.log('    $ license-generator install bsd -y 2014 -n "John Doe" -e txt');
   console.log('    $ license-generator view bsd');
   console.log('');
 });
