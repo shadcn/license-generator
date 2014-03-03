@@ -22,6 +22,7 @@ program
   .description('Use this command to generate a license file.')
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
+  .option("-p, --project <project name>", "Project name.")
   .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
   .action(function(license, options){
     // Use provided year or default to current year.
@@ -29,6 +30,9 @@ program
 
     // Use provided name or default to blank.
     var fullname = options.fullname || '';
+
+    // Use the provided project or default to none
+    var projectname = options.project || '';
 
     // Get file extension.
     var extension = options.extension || '';
@@ -43,7 +47,8 @@ program
       // Make replacements for year and fullname.
       var result = data
                     .replace(/\[year\]/g, year)
-                    .replace(/\[fullname\]/g, fullname);
+                    .replace(/\[fullname\]/g, fullname)
+                    .replace(/\[project\]/g, projectname);
 
       var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
       fs.writeFile(generated_license, result, 'utf8', function (err) {
@@ -75,6 +80,7 @@ program
 program.on('--help', function(){
   console.log('    -y, --year The year to use. Example 2014.');
   console.log('    -n, --fullname The fullname to use in the license.');
+  console.log('    -p --project The name of the project to use in the license.')
   console.log('    -e, --extension The file extension for the license. Example: txt. Defaults to no extension.');
   console.log('');
 });
