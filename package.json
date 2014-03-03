@@ -1,6 +1,6 @@
 {
   "name": "license-generator",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Generates a license for your open source project.",
   "main": "index.js",
   "preferGlobal": "true",
