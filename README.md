@@ -24,6 +24,7 @@ Options
 
     -y, --year The year to use. Example 2014.
     -n, --fullname The fullname to use in the license.
+    -p --project The name of the project to use in the license.
     -e, --extension The file extension for the license. Example: txt. Defaults to no extension.
 
 Examples
