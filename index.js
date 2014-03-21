@@ -17,6 +17,10 @@ fs.readdirSync(__dirname + '/licenses').map(function(license) {
 //   .option("-y, --year <year>", 'The year to use. Example: 2014.')
 //   .option("-n, --fullname <fullname>", 'Your fullname.')
 
+/**
+ * Install command.
+ * license-generator install [license]
+ */
 program
   .command('install [license]')
   .description('Use this command to generate a license file.')
@@ -60,6 +64,10 @@ program
     });
   });
 
+/**
+ * View command.
+ * license-generator view [license]
+ */
 program
   .command('view [license]')
   .description('Use this command to view the content of a license.')
