@@ -48,7 +48,7 @@ program
     var license_file = __dirname + '/licenses/' + license + '.txt';
     fs.readFile(license_file, 'utf8', function (err,data) {
       if (err) {
-        return console.log(err);
+        throw err;
       }
 
       // Make replacements for year and fullname.
@@ -59,7 +59,7 @@ program
 
       var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
       fs.writeFile(generated_license, result, 'utf8', function (err) {
-         if (err) return console.log(err);
+         if (err) throw err;
 
          // Show a success message.
          console.log('Successfully added ' + license + ' licence to ' + generated_license + ' file.');
@@ -79,8 +79,8 @@ program
     license = license.toLowerCase();
     
     if (!license) {
-      console.log('Error: license name missing');
       program.help();
+      throw new Error('License name missing');
     }
 
     // Get license file.
