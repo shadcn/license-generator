@@ -29,6 +29,9 @@ program
   .option("-p, --project <project name>", "Project name.")
   .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
   .action(function(license, options){
+    // Lowercase the provided license name
+    license = license.toLowerCase();
+    
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
 
@@ -72,6 +75,9 @@ program
   .command('view [license]')
   .description('Use this command to view the content of a license.')
   .action(function(license) {
+    // Lowercase the provided license name
+    license = license.toLowerCase();
+    
     if (!license) {
       console.log('Error: license name missing');
       program.help();
