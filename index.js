@@ -22,15 +22,16 @@ fs.readdirSync(__dirname + '/licenses').map(function (license) {
  * license-generator install [license]
  */
 program
-  .command('install [license]')
+  .command('install')
   .description('Use this command to generate a license file.')
+  .option("-l, --license <license>", "Choose a license for your project. Example: mit.")
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
   .option("-p, --project <project name>", "Project name.")
   .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
-  .action(function (license, options) {
+  .action(function (options) {
     // Lowercase the provided license name
-    license = license.toLowerCase();
+    var license = options.license.toLowerCase() || JSON.parse("../../package.json").license;
 
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
