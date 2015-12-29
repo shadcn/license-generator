@@ -23,6 +23,7 @@ fs.readdirSync(__dirname + '/licenses').map(function (license) {
  */
 program
   .command('install [license]')
+  .alias('i')
   .description('Use this command to generate a license file.')
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
