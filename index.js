@@ -65,7 +65,7 @@ program
          }
 
          // Show a success message.
-         console.log('Successfully added ' + license + ' licence to ' + generated_license + ' file.');
+         console.log('Successfully added ' + license + ' license to ' + generated_license + ' file.');
       });
     });
   });
@@ -115,6 +115,7 @@ program.on('--help', function () {
   console.log('  Examples:');
   console.log('');
   console.log('    $ license-generator install bsd -y 2014 -n "John Doe" -e txt');
+  console.log('    $ license-generator i mit -y 2014 -n "John Doe"');
   console.log('    $ license-generator view bsd');
   console.log('');
 });
