@@ -33,6 +33,11 @@ program
     // Lowercase the provided license name
     license = license.toLowerCase();
 
+    if (!license) {
+      console.log('Error: license name missing');
+      program.help();
+    }
+
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
 
