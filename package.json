@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Generates a license for your open source project.",
   "main": "index.js",
-  "preferGlobal": "true",
   "bin": {
     "license-generator": "index.js"
   },

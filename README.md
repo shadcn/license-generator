@@ -2,8 +2,6 @@
 
 Generates a license for your open source project. See [choosealicense.com](http://choosealicense.com).
 
-![license-generator](https://cloud.githubusercontent.com/assets/124599/6750330/8b338cba-cf12-11e4-81c5-59af8c39787d.gif)
-
 ## Installation
 
     npm install license-generator
