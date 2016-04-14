@@ -36,11 +36,18 @@ program
     // Use provided year or default to current year.
     var year = options.year || new Date().getUTCFullYear();
 
+    //read from package.json and infer variable if not given
+    var packageJSON = {};
+    try{
+        packageJSON = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+    }catch(err){
+    }
+
     // Use provided name or default to blank.
-    var fullname = options.fullname || '';
+    var fullname = options.fullname || packageJSON.author || '';
 
     // Use the provided project or default to none
-    var projectname = options.project || '';
+    var projectname = options.project || packageJSON.name || '';
 
     // Get file extension.
     var extension = options.extension || '';
