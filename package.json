@@ -4,25 +4,27 @@
   "description": "Generates a license for your open source project.",
   "main": "index.js",
   "preferGlobal": "true",
-  "bin": { "license-generator": "index.js" },
+  "bin": {
+    "license-generator": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:arshad/license-generator.git"
+    "url": "git@github.com:shadcn/license-generator.git"
   },
   "keywords": [
     "license",
     "generator",
     "npm"
   ],
-  "author": "Arshad Chummun <arshad@chummun.com>",
+  "author": "shadcn",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arshad/license-generator/issues"
+    "url": "https://github.com/shadcn/license-generator/issues"
   },
-  "homepage": "https://github.com/arshad/license-generator",
+  "homepage": "https://github.com/shadcn/license-generator",
   "dependencies": {
     "commander": "~2.1.0"
   }
