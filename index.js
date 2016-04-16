@@ -23,7 +23,7 @@ fs.readdirSync(__dirname + '/licenses').map(function (license) {
  */
 program
   .command('install [license]')
-  .alias('i')
+  // .alias('i')
   .description('Use this command to generate a license file.')
   .option("-y, --year <year>", 'The year to use. Example: 2014.')
   .option("-n, --fullname <fullname>", 'Your fullname.')
@@ -66,6 +66,8 @@ program
 
          // Show a success message.
          console.log('Successfully added ' + license + ' license to ' + generated_license + ' file.');
+         //end
+         process.exit(0);
       });
     });
   });
@@ -91,6 +93,9 @@ program
 
     // Show the license file.
     console.log(fs.readFileSync(license_file, 'utf8'));
+
+    //end
+    process.exit(0);
   });
 
 // Options.
