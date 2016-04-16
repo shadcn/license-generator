@@ -2,6 +2,7 @@
 
 var program = require('commander');
 var fs = require('fs');
+var licenseGenerator = require('./lib/index.js');
 
 // Get version from package.json.
 var version = require('./package.json').version;
@@ -52,29 +53,22 @@ program
     // Get file extension.
     var extension = options.extension || '';
 
-    // Create a LICENSE file.
-    var license_file = __dirname + '/licenses/' + license + '.txt';
-    fs.readFile(license_file, 'utf8', function (err,data) {
-      if (err) {
-        return console.log(err);
-      }
+    // Get file output location
+    var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
 
-      // Make replacements for year and fullname.
-      var result = data
-                    .replace(/\[year\]/g, year)
-                    .replace(/\[fullname\]/g, fullname)
-                    .replace(/\[project\]/g, projectname);
-
-      var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
-      fs.writeFile(generated_license, result, 'utf8', function (err) {
-         if (err) {
-           return console.log(err);
-         }
-
-         // Show a success message.
-         console.log('Successfully added ' + license + ' license to ' + generated_license + ' file.');
-      });
-    });
+    licenseGenerator.install({
+        output: generated_license,
+        license: license,
+        year: year,
+        fullname: fullname,
+        projectname: projectname
+    }, function(err){
+        if (err) {
+          return console.log(err);
+        }
+        // Show a success message.
+        console.log('Successfully added ' + license + ' license to ' + generated_license + ' file.');
+    })
   });
 
 /**
