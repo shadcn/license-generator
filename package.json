@@ -4,7 +4,7 @@
   "description": "Generates a license for your open source project.",
   "main": "index.js",
   "preferGlobal": "true",
-  "bin": { "license-generator": "index.js" },
+  "bin": { "license-generator": "./bin/cli.js" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
