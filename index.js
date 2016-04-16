@@ -30,6 +30,11 @@ program
   .option("-p, --project <project name>", "Project name.")
   .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
   .action(function (license, options) {
+    // Throw error if license is not provided
+    if (!license) {
+      console.log('Error: license name missing');
+      program.help();
+    }
     // Lowercase the provided license name
     license = license.toLowerCase();
 
@@ -85,13 +90,15 @@ program
   .command('view [license]')
   .description('Use this command to view the content of a license.')
   .action(function (license) {
-    // Lowercase the provided license name
-    license = license.toLowerCase();
 
+    // Throw error if not license is not provided
     if (!license) {
       console.log('Error: license name missing');
       program.help();
     }
+    // Lowercase the provided license name
+    license = license.toLowerCase();
+
 
     // Get license file.
     var license_file = __dirname + '/licenses/' + license + '.txt';
