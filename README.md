@@ -20,7 +20,7 @@ Generate a license
 View a license
 
     $ license-generator view LICENSE
-    
+
 Options
 --------------
 
@@ -28,6 +28,22 @@ Options
     -n, --fullname The fullname to use in the license.
     -p --project The name of the project to use in the license.
     -e, --extension The file extension for the license. Example: txt. Defaults to no extension.
+
+
+Or using API
+--------------
+```javascript
+var license = require('license-generator');
+license.install({
+    output: './LICENSE',
+    license: 'MIT',
+    year: 2016,
+    fullname: 'your name',
+    projectname: 'project name',
+}, function(err){
+    if(err) console.log(err);
+});
+```
 
 Examples
 --------------
@@ -54,7 +70,7 @@ Available licenses
     no-license
     unlicense
     wtfpl
-    
+
 License
 --------------
 
