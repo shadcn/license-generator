@@ -129,6 +129,6 @@ program.parse(process.argv);
 
 if (!program.args.length) {
   program.help();
-}else{
+}else if(program.rawArgs[2] !== 'install' && program.rawArgs[2] !== 'view'){
   console.log('Unknown command. Use `license-generator --help` to learn more about commands available.');
 }
