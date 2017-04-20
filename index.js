@@ -104,7 +104,7 @@ program
 program.on('--help', function () {
   console.log('    -y, --year The year to use. Example 2014.');
   console.log('    -n, --fullname The fullname to use in the license.');
-  console.log('    -p --project The name of the project to use in the license.');
+  console.log('    -p, --project The name of the project to use in the license.');
   console.log('    -e, --extension The file extension for the license. Example: txt. Defaults to no extension.');
   console.log('');
 });
