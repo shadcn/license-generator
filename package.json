@@ -17,12 +17,12 @@
     "generator",
     "npm"
   ],
-  "author": "Willow Snow",
+  "author": "Arshad Chummun <arshad@chummun.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sneow/license-generator/issues"
+    "url": "https://github.com/arshad/license-generator/issues"
   },
-  "homepage": "https://github.com/sneow/license-generator",
+  "homepage": "https://github.com/arshad/license-generator",
   "dependencies": {
     "commander": "~2.1.0"
   }

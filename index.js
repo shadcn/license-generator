@@ -38,9 +38,10 @@ program
 
     //read from package.json and infer variable if not given
     let packageJSON = {};
-    try{
+    try {
         packageJSON = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-    }catch(err){
+    } catch (err) {
+        throw new Error(err);
     }
 
     // Use provided name or default to blank.
@@ -54,10 +55,8 @@ program
 
     // Create a LICENSE file.
     const license_file = __dirname + '/licenses/' + license + '.txt';
-    fs.readFile(license_file, 'utf8', (err,data) => {
-      if (err) {
-        return console.log(err);
-      }
+    fs.readFile(license_file, 'utf8', (err, data) => {
+      if (err) throw new Error(err);
 
       // Make replacements for year and fullname.
       const result = data
@@ -67,9 +66,7 @@ program
 
       const generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
       fs.writeFile(generated_license, result, 'utf8', (err) => {
-         if (err) {
-           return console.log(err);
-         }
+         if (err) throw new Error(err);
 
          // Show a success message.
          console.log('Successfully added ' + license + ' license to ' + generated_license + ' file.');
@@ -84,12 +81,12 @@ program
 program
   .command('view [license]')
   .description('Use this command to view the content of a license.')
-  .action(function (license) {
+  .action((license) => {
     // Lowercase the provided license name
     license = license.toLowerCase();
 
     if (!license) {
-      console.log('Error: license name missing');
+      console.error('Error: license name missing');
       program.help();
     }
 
