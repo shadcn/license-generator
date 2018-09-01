@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
-var program = require('commander');
-var fs = require('fs');
+const program = require('commander');
+const fs = require('fs');
 
 // Get version from package.json.
-var version = require('./package.json').version;
+const version = require('./package.json').version;
 
 // Get available licenses.
-var licenses = [];
+const licenses = [];
 fs.readdirSync(__dirname + '/licenses').map(function (license) {
   licenses.push(license.replace(/\.[0-9a-z]+$/i, ''));
 });
@@ -34,38 +34,38 @@ program
     license = license.toLowerCase();
 
     // Use provided year or default to current year.
-    var year = options.year || new Date().getUTCFullYear();
+    const year = options.year || new Date().getUTCFullYear();
 
     //read from package.json and infer variable if not given
-    var packageJSON = {};
+    let packageJSON = {};
     try{
         packageJSON = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
     }catch(err){
     }
 
     // Use provided name or default to blank.
-    var fullname = options.fullname || packageJSON.author || '';
+    const fullname = options.fullname || packageJSON.author || '';
 
     // Use the provided project or default to none
-    var projectname = options.project || packageJSON.name || '';
+    const projectname = options.project || packageJSON.name || '';
 
     // Get file extension.
-    var extension = options.extension || '';
+    const extension = options.extension || '';
 
     // Create a LICENSE file.
-    var license_file = __dirname + '/licenses/' + license + '.txt';
+    const license_file = __dirname + '/licenses/' + license + '.txt';
     fs.readFile(license_file, 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
 
       // Make replacements for year and fullname.
-      var result = data
+      const result = data
                     .replace(/\[year\]/g, year)
                     .replace(/\[fullname\]/g, fullname)
                     .replace(/\[project\]/g, projectname);
 
-      var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
+      const generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
       fs.writeFile(generated_license, result, 'utf8', function (err) {
          if (err) {
            return console.log(err);
@@ -94,7 +94,7 @@ program
     }
 
     // Get license file.
-    var license_file = __dirname + '/licenses/' + license + '.txt';
+    const license_file = __dirname + '/licenses/' + license + '.txt';
 
     // Show the license file.
     console.log(fs.readFileSync(license_file, 'utf8'));
