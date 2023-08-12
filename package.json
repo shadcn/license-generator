@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/arshad/license-generator",
   "dependencies": {
-    "commander": "~2.1.0"
+    "commander": "~2.3.0"
   }
 }
