@@ -10,7 +10,7 @@ Generates a license for your open source project. See [choosealicense.com](http:
 
 Generate a license
 
-    $ license-generator install LICENSE -y YEAR -n FULLNAME -e EXTENSION
+    $ license-generator install LICENSE -y YEAR -n FULLNAME -e EXTENSION -o OUTPUT
 
 View a license
 
@@ -22,10 +22,11 @@ View a license
     -n, --fullname The fullname to use in the license.
     -p --project The name of the project to use in the license.
     -e, --extension The file extension for the license. Example: txt. Defaults to no extension.
+    -o, --output The output license path. Example: ./LICENSE. Defaults to command executed path.
 
 ## Examples
 
-    $ license-generator install mit -y 2014 -n "John Doe" -e txt
+    $ license-generator install mit -y 2014 -n "John Doe" -e txt -o ./LICENSE
     $ license-generator view mit
 
 ## Available licenses

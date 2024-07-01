@@ -29,6 +29,7 @@ program
   .option("-n, --fullname <fullname>", 'Your fullname.')
   .option("-p, --project <project name>", "Project name.")
   .option("-e, --extension <extension>", 'The file extension for the license. Example: txt. Defaults to no extension.')
+  .option("-o, --output <output path>", 'The output license path.')
   .action(function (license, options) {
     // Lowercase the provided license name
     license = license.toLowerCase();
@@ -52,6 +53,8 @@ program
     // Get file extension.
     var extension = options.extension || '';
 
+    var output = options.output || './LICENSE';
+
     // Create a LICENSE file.
     var license_file = __dirname + '/licenses/' + license + '.txt';
     fs.readFile(license_file, 'utf8', function (err,data) {
@@ -65,7 +68,7 @@ program
                     .replace(/\[fullname\]/g, fullname)
                     .replace(/\[project\]/g, projectname);
 
-      var generated_license =  './LICENSE' + ((extension) ? '.' + extension : '');
+      var generated_license =  output + ((extension) ? '.' + extension : '');
       fs.writeFile(generated_license, result, 'utf8', function (err) {
          if (err) {
            return console.log(err);
@@ -106,6 +109,7 @@ program.on('--help', function () {
   console.log('    -n, --fullname The fullname to use in the license.');
   console.log('    -p, --project The name of the project to use in the license.');
   console.log('    -e, --extension The file extension for the license. Example: txt. Defaults to no extension.');
+  console.log('    -o, --output The output license path. Example: ./LICENSE. Defaults to command executed path.');
   console.log('');
 });
 
@@ -121,7 +125,7 @@ program.on('--help', function () {
 program.on('--help', function () {
   console.log('  Examples:');
   console.log('');
-  console.log('    $ license-generator install bsd -y 2014 -n "John Doe" -e txt');
+  console.log('    $ license-generator install bsd -y 2014 -n "John Doe" -e txt -o ./LICENSE');
   console.log('    $ license-generator i mit -y 2014 -n "John Doe"');
   console.log('    $ license-generator view bsd');
   console.log('');
